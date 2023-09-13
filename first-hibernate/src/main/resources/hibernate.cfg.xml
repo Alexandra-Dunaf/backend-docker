@@ -9,6 +9,7 @@
     <property name="connection.username">postgres</property>
     <property name="connection.password">password</property>
     <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL10Dialect</property>
+    <mapping class="org.example.entity.UserData"/>
 
     <!-- DB schema will be updated if needed -->
     <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
