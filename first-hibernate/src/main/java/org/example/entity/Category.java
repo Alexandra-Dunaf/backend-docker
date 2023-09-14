@@ -5,8 +5,6 @@ import lombok.*;
 
 @Entity
 @Table(name = "category", schema = "todolist", catalog = "postgres")
-@EqualsAndHashCode
-@ToString
 @Getter
 @Setter
 @AllArgsConstructor
@@ -16,6 +14,7 @@ public class Category {
     private String title;
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    @EqualsAndHashCode.Include
     private Long id;
     private Long userId;
     @Column(updatable = false)
@@ -27,5 +26,8 @@ public class Category {
     @JoinColumn(name = "user_id", referencedColumnName = "id", insertable=false, updatable=false)
     private User user;
 
-
+    @Override
+    public String toString() {
+        return title;
+    }
 }

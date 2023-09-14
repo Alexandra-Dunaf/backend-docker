@@ -8,6 +8,8 @@
     <property name="connection.driver_class">org.postgresql.Driver</property>
     <property name="connection.username">postgres</property>
     <property name="connection.password">password</property>
+    <property name="hibernate.default_schema">todolist</property>
+    <property name="hibernate.default_catalog">postgres</property>
       <!--    <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL10Dialect</property>
           <property name="hibernate.show_sql">true</property>
           <property name="show_sql">true</property>
@@ -15,7 +17,7 @@
           <property name="hibernate.highlight_sql">true</property> -->
 
 
-        <mapping class="org.example.entity.User"/>
+    <mapping class="org.example.entity.User"/>
     <mapping class="org.example.entity.Category"/>
     <mapping class="org.example.entity.Priority"/>
     <mapping class="org.example.entity.Activity"/>

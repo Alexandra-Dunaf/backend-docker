@@ -11,15 +11,18 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
 public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    @EqualsAndHashCode.Include
     private Long id;
     private String name;
 
     @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
     private Set<User> users;
 
-
+    @Override
+    public String toString() {
+        return name;
+    }
 }

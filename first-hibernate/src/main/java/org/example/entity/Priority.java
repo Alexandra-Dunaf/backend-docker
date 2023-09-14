@@ -9,14 +9,13 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
-@ToString
 public class Priority {
 
     private String title;
     private String color;
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    @EqualsAndHashCode.Include
     private Long id;
     private Long userId;
 
@@ -24,5 +23,8 @@ public class Priority {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
-
+    @Override
+    public String toString() {
+        return title;
+    }
 }

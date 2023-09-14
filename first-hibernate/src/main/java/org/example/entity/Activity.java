@@ -10,11 +10,12 @@ import org.hibernate.annotations.Type;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
+
 @ToString
 public class Activity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    @EqualsAndHashCode.Include
     private Long id;
 
     @Basic
