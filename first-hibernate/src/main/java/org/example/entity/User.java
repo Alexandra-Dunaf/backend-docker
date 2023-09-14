@@ -12,13 +12,13 @@ import lombok.Setter;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserData {
+public class User {
     @Basic
     @Column(name = "email", nullable = false, length = -1)
     private String email;
     @Basic
     @Column(name = "userpassword", nullable = false, length = -1)
-    private String userpassword;
+    private String password;
     @Basic
     @Column(name = "username", nullable = false, length = -1)
     private String username;
