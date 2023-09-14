@@ -18,6 +18,8 @@
         <mapping class="org.example.entity.User"/>
     <mapping class="org.example.entity.Category"/>
     <mapping class="org.example.entity.Priority"/>
+    <mapping class="org.example.entity.Activity"/>
+    <mapping class="org.example.entity.Stat"/>
 
     <!-- DB schema will be updated if needed -->
     <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->

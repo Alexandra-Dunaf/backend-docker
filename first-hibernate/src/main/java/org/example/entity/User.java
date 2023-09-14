@@ -31,5 +31,11 @@ public class User {
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Priority> priorities;
 
+    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
+    public Activity activity; // активность пользователя (активация и любые другие)
+
+    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
+    public Stat stat; // общая статистика пользователя по всем задачам
+
 
 }

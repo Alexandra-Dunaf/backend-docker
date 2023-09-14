@@ -21,7 +21,7 @@ public class Priority {
     private Long userId;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id", insertable=false, updatable=false)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
 
