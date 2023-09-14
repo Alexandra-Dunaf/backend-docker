@@ -9,6 +9,12 @@ repositories {
     mavenCentral()
 }
 
+compileJava.options.encoding = 'UTF-8'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
 dependencies {
     // https://mvnrepository.com/artifact/org.hibernate/hibernate-core-jakarta
     implementation 'org.hibernate:hibernate-core-jakarta:5.6.15.Final'
