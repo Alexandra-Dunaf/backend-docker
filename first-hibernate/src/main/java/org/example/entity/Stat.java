@@ -2,6 +2,7 @@ package org.example.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Entity
 @Table(name = "stat", schema = "todolist", catalog = "postgres")
@@ -9,6 +10,8 @@ import lombok.*;
 @NoArgsConstructor
 @Setter
 @Getter
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 public class Stat { // в этой таблице всего 1 запись, которая обновляется (но никогда не удаляется)
 
     @Id
