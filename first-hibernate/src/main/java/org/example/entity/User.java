@@ -15,25 +15,21 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
-    @Basic
-    @Column(name = "email", nullable = false, length = -1)
-    private String email;
-    @Basic
-    @Column(name = "userpassword", nullable = false, length = -1)
-    private String password;
-    @Basic
-    @Column(name = "username", nullable = false, length = -1)
-    private String username;
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id", nullable = false)
     private Long id;
+
+    private String email;
+    private String username;
+    @Column(name = "userpassword")
+    private String password;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Category> categories;
 
-    public User(String email, String username) {
-        this.email = email;
-        this.username = username;
-    }
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<Priority> priorities;
+
+
 }

@@ -4,24 +4,21 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "category", schema = "todolist", catalog = "postgres")
-@EqualsAndHashCode
-@ToString
+@Table(name = "priority", schema = "todolist", catalog = "postgres")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Category {
+@EqualsAndHashCode
+@ToString
+public class Priority {
 
     private String title;
+    private String color;
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
     private Long userId;
-    @Column(updatable = false)
-    private Long completedCount;
-    @Column(updatable = false)
-    private Long uncompletedCount;
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id", insertable=false, updatable=false)
