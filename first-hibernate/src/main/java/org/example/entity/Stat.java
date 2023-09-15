@@ -11,7 +11,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 @Setter
 @Getter
 @Cacheable
-@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Stat { // в этой таблице всего 1 запись, которая обновляется (но никогда не удаляется)
 
     @Id
@@ -26,6 +26,7 @@ public class Stat { // в этой таблице всего 1 запись, к�
     private Long uncompletedTotal;
 
     @OneToOne
+    @MapsId
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 

@@ -12,7 +12,7 @@ import org.hibernate.annotations.Type;
 @AllArgsConstructor
 @NoArgsConstructor
 @Cacheable
-@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Activity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -27,6 +27,7 @@ public class Activity {
     private String uuid; // создается только один раз с помощью триггера в БД
 
     @OneToOne
+    @MapsId
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
