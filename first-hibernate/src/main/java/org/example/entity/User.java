@@ -27,10 +27,8 @@ public class User {
     private String username;
     @Column(name = "userpassword")
     private String password;
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "user_role",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
+
+    @ManyToMany(mappedBy = "users", fetch = FetchType.EAGER)
     private Set<Role> roles = new HashSet<>();
 
 //    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)

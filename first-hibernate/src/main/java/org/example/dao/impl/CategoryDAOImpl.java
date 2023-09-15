@@ -1,42 +1,44 @@
-package org.example.dao;
+package org.example.dao.impl;
 
 import org.example.HibernateUtil;
-import org.example.entity.User;
+import org.example.dao.interfaces.objects.CategoryDAO;
+import org.example.entity.Category;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
-
 import java.util.List;
 
-public class UserDAOImpl implements CommonDAO{
+public class CategoryDAOImpl implements CategoryDAO {
 
     @Override
-    public List<User> findAll() {
+    public List<Category> findAll() {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        Query<User> query = session.createQuery("from User", User.class);
-        List<User> list = query.getResultList();
+        Query<Category> query = session.createQuery("FROM Category", Category.class);
+        List<Category> list = query.getResultList();
         session.close();
         return list;
     }
 
     @Override
-    public List<User> findAll(String email) {
+    public List<Category> findAll(String email) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        Query<User> query = session.createQuery("from User where email=:email", User.class);
-        query.setParameter("email", email);
-        List<User> list = query.getResultList();
+        Query<Category> query = session.createQuery("FROM Category p where p.user.email like :email", Category.class);
+        query.setParameter("email", "%"+email+"%");
+        List<Category> list = query.getResultList();
         session.close();
         return list;
     }
 
     @Override
-    public User get(long id) {
+    public Category get(long id) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        return session.get(User.class, id);
+        Category user = session.get(Category.class, id);
+        session.close();
+        return user;
     }
 
     @Override
-    public void update(Object obj) {
+    public void update(Category obj) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.merge(obj);
@@ -48,18 +50,21 @@ public class UserDAOImpl implements CommonDAO{
     public void delete(long id) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        User user = session.get(User.class, id);
-        session.remove(user);
+        Category u = new Category();
+        u.setId(id);
+        session.remove(u);
         session.getTransaction().commit();
         session.close();
     }
 
     @Override
-    public void add(Object obj) {
+    public void add(Category obj) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.persist(obj);
         session.getTransaction().commit();
         session.close();
     }
+
+
 }

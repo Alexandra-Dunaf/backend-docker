@@ -1,12 +1,8 @@
-package org.example.dao;
+package org.example.dao.interfaces;
 
 import java.util.List;
 
 public interface CommonDAO<T> {
-
-    List<T> findAll();//получить все значения
-
-    List<T> findAll(String email);//получить все значения по емайл
 
     T get(long id);//найти по id
 
