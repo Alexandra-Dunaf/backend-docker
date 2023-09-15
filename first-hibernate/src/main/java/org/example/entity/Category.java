@@ -15,13 +15,15 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 public class Category {
 
     private String title;
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @EqualsAndHashCode.Include
     private Long id;
-    private Long userId;
+
     @Column(updatable = false)
     private Long completedCount;
+
     @Column(updatable = false)
     private Long uncompletedCount;
 

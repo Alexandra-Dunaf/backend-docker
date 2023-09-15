@@ -39,6 +39,9 @@ public class User {
     @OneToOne(mappedBy = "user", fetch = FetchType.LAZY, optional = false)
     private Stat stat; // общая статистика пользователя по всем задачам
 
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<Task> tasks;
+
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_role",
         joinColumns = @JoinColumn(name = "user_id"),

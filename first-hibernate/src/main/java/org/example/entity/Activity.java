@@ -21,7 +21,7 @@ public class Activity {
 
     @Basic
     @Convert(converter = org.hibernate.type.NumericBooleanConverter.class) // для автоматической конвертации числа в true/false
-    private boolean activated; // становится true только после подтверждения активации пользователем (обратно false уже стать не может по логике)
+    private Boolean activated; // становится true только после подтверждения активации пользователем (обратно false уже стать не может по логике)
 
     @Column(updatable = false)
     private String uuid; // создается только один раз с помощью триггера в БД

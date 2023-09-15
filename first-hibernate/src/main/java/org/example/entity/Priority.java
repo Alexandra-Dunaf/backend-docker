@@ -20,7 +20,6 @@ public class Priority {
     @Id
     @EqualsAndHashCode.Include
     private Long id;
-    private Long userId;
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
