@@ -22,8 +22,8 @@ public class Role {
     private Long id;
     private String name;
 
-    @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
-    private Set<User> users;
+//    @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
+//    private Set<User> users;
 
     @Override
     public String toString() {

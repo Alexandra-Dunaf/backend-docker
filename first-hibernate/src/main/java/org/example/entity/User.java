@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -26,27 +27,28 @@ public class User {
     private String username;
     @Column(name = "userpassword")
     private String password;
-
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-    private List<Category> categories;
-
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-    private List<Priority> priorities;
-
-    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY, optional = false)
-    private Activity activity; // активность пользователя (активация и любые другие)
-
-    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY, optional = false)
-    private Stat stat; // общая статистика пользователя по всем задачам
-
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-    private List<Task> tasks;
-
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_role",
-        joinColumns = @JoinColumn(name = "user_id"),
-        inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles;
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
+
+//    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+//    private List<Category> categories;
+//
+//    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+//    private List<Priority> priorities;
+//
+//    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY, optional = false)
+//    private Activity activity; // активность пользователя (активация и любые другие)
+//
+//    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY, optional = false)
+//    private Stat stat; // общая статистика пользователя по всем задачам
+//
+//    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+//    private List<Task> tasks;
+
+
 
     @Override
     public String toString() {
